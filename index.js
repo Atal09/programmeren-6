@@ -3,11 +3,12 @@ import mongoose from 'mongoose';
 
 import 'dotenv/config';
 
-import notesRouter from "./routes/noteRoutes.js";
-//import moviesRouter from "./routes/movieRoutes.js";
+// import notesRouter from "./routes/noteRoutes.js";
+import moviesRouter from "./routes/movieRoutes.js";
 
-mongoose.connect('mongodb://127.0.0.1:27017/notes');
-//mongoose.connect('mongodb://127.0.0.1:27017/movies');
+// mongoose.connect('mongodb://127.0.0.1:27017/notes');
+
+mongoose.connect('mongodb://127.0.0.1:27017/movies');
 
 
 const app = express();
@@ -18,8 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //conect router notes
-app.use("/notes", notesRouter);
-//app.use("/movies", moviesRouter);
+// app.use("/notes", notesRouter);
+app.use("/movies", moviesRouter);
 
 app.get("/", (req, res)=>{
   res.send("Hello World")
